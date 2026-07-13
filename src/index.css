@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto; /* Lenis handles smooth scroll */
+    background-color: #0a0806;
+  }
+
+  body {
+    @apply bg-ink text-cream font-body antialiased;
+    overflow-x: hidden;
+    cursor: none; /* replaced by CustomCursor on non-touch devices */
+  }
+
+  @media (max-width: 1024px), (hover: none) {
+    body {
+      cursor: auto;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: #c9a15a;
+    color: #0a0806;
+  }
+}
+
+@layer components {
+  /* Section label eyebrow text, e.g. "— OUR STORY —" */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-gold text-xs md:text-sm tracking-widest2 uppercase font-medium;
+  }
+  .eyebrow::before,
+  .eyebrow::after {
+    content: "";
+    @apply h-px w-6 bg-gold/60;
+  }
+
+  .section-title {
+    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-cream;
+  }
+
+  .gold-text {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  .btn-gold {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gold-gradient text-ink font-semibold text-sm tracking-wide uppercase overflow-hidden transition-transform duration-300 will-change-transform;
+  }
+
+  .btn-outline {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-gold/50 text-cream font-semibold text-sm tracking-wide uppercase transition-colors duration-300 hover:bg-gold/10;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  .container-px {
+    @apply px-6 sm:px-10 lg:px-20;
+  }
+}
+
+@layer utilities {
+  .text-stroke-gold {
+    -webkit-text-stroke: 1px #c9a15a;
+    color: transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0806;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a15a55;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a15a99;
+}
+
+/* Lenis smooth scroll required classes */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Swiper overrides for dark theme */
+.swiper-pagination-bullet {
+  background: #c9a15a !important;
+  opacity: 0.4 !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+}
+
+/* react-datepicker dark luxury theme override */
+.react-datepicker {
+  font-family: 'Manrope', sans-serif !important;
+  background-color: #1d1a17 !important;
+  border: 1px solid rgba(201,161,90,0.25) !important;
+  border-radius: 1rem !important;
+  overflow: hidden;
+}
+.react-datepicker__header {
+  background-color: #141210 !important;
+  border-bottom: 1px solid rgba(201,161,90,0.15) !important;
+}
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker__day-name {
+  color: #f3ece0 !important;
+}
+.react-datepicker__day {
+  color: #a89d8d !important;
+}
+.react-datepicker__day:hover {
+  background-color: rgba(201,161,90,0.2) !important;
+  border-radius: 50% !important;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: linear-gradient(135deg, #e8caa0 0%, #c9a15a 50%, #9c7b3f 100%) !important;
+  color: #0a0806 !important;
+  border-radius: 50% !important;
+}
+.react-datepicker__time-container,
+.react-datepicker__time-box,
+.react-datepicker__time-list {
+  background-color: #1d1a17 !important;
+}
+.react-datepicker__time-list-item {
+  color: #a89d8d !important;
+}
+.react-datepicker__time-list-item:hover {
+  background-color: rgba(201,161,90,0.2) !important;
+}
+.react-datepicker__time-list-item--selected {
+  background: #c9a15a !important;
+  color: #0a0806 !important;
+}
+.react-datepicker__triangle {
+  display: none !important;
+}
